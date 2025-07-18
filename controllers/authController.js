@@ -6,6 +6,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 exports.register = async (req, res) => {
   // TODO : Récupérer le nom d'utilisateur username et le mot de passe password depuis le corps de la requête
+  const { username, password } = req.body; 
 
   if (!username || !password) {
     console.log(" ⚠️ Registration failed: Missing username or password");
@@ -19,7 +20,7 @@ exports.register = async (req, res) => {
   }
 
   // TODO : Hash the password before storing it
-  const hash = ;
+  const hash = await bcrypt.hash(password, 10);
   const user = userRepo.createUser({ username, password: hash, currentRoom: 1 });
 
   // TODO : Return a success message 
