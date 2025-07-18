@@ -24,26 +24,34 @@ exports.register = async (req, res) => {
   const user = userRepo.createUser({ username, password: hash, currentRoom: 1 });
 
   // TODO : Return a success message 
-
+  console.log("User registered:", username);
+  res.status(201).json({ message: "User registered sucessfully", user: { username: user.username, currentRoom: user.currentRoom } });
 };
 
 exports.login = async (req, res) => {
   // TODO : Récupérer le nom d'utilisateur username et le mot de passe password depuis le corps de la requête
-  
+  const { username, password } = req.body;
 
   console.log("Login attempt for:", username);
 
   const user = userRepo.findUserByUsername(username);
   // TODO : Vérifier si l'utilisateur existe sinon retourner un statut 401
+  if (!user) {
+    console.log("Login Failed: User not found");
+    return res.status(401).json({ error: "Invalid credentials "});
+  }
 
   // Compare the provided password with the stored hash
-  const match =;
-  if (!match) return res.status(401).json({ error: "Invalid credentials" });
-
+  const match = await bcrypt.compare(password, user.password);
+  if (!match) {
+    console.log("Login Failed: Incorrect password");
+   return res.status(401).json({ error: "Invalid credentials" });
+}
   console.log(" ✅ User authenticated:", username);
   // TODO : Sign the JWT token with the username and JWT_SECRET
-  const token = ;
+  const token = jwt.sign({ username: user.username }, JWT_SECRET, {expiresIn: "1h" });
   // TODO : Return the token in the response in json
+  res.json({ token });
 
 };
 

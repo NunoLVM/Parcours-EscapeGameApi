@@ -17,6 +17,10 @@ app.get("/ping", (req, res) => res.send("pong"));
 app.use("/auth", authRoutes);
 app.use("/rooms", roomRoutes);
 
+app.use((req, res) => {
+  res.status(404).json({ message: "Route non trouvée."});
+});
+
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });

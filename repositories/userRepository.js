@@ -1,6 +1,10 @@
 // repositories/userRepository.js
 
-const users = []; // Base en mémoire
+const fs = require("fs");
+const path = require("path");
+const usersFile = path.join(__dirname, "users.json");
+
+
 
 function findUserByUsername(username) {
   return users.find(user => user.username === username);
