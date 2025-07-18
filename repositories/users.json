@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "username": "alice",
+    "password": "$2b$10$Xos0t1DY2unJvYwF6Vba/eTo4cQ4lWqZuJv4aEtbzBwR08hCRSkXq",
+    "currentRoom": 1
+  },
+  {
+    "username": "nuno",
+    "password": "$2b$10$Ss9pQ.vRf/uS.BZdm/5um.eZX44.DCQadnwMeNeyalVEQG2Y9OWYC",
+    "currentRoom": 1
+  }
+]
