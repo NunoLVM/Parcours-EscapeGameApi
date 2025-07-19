@@ -8,5 +8,10 @@
     "username": "nuno",
     "password": "$2b$10$Ss9pQ.vRf/uS.BZdm/5um.eZX44.DCQadnwMeNeyalVEQG2Y9OWYC",
     "currentRoom": 1
+  },
+  {
+    "username": "finaltest",
+    "password": "$2b$10$Lkd4JrCtWQMOXKGIKR.aS.0mWLhzbl0gPyru/fizNC1DE5kLemkyi",
+    "currentRoom": 1
   }
 ]
